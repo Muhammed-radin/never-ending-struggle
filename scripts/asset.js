@@ -82,5 +82,7 @@ function setAssetToEntity(entity, asset) {
 let trainHouseAsset = new ClassicAsset('images/asset/set1.png', 'trainHouse', 0, 0, 250, 250)
 let campHouseAsset = new ClassicAsset('images/asset/set1.png', 'campHouse', 250, 0, 250, 250)
 let treeBatchAsset = new ClassicAsset('images/asset/set1.png', 'treeBatch', 250, 730, 250, 250)
+let coneTreeBatchAsset = new ClassicAsset('images/asset/set4.png', 'coneTreeBatch', 0, 250, 250, 250)
 
 
+let allClassicAssets = [treeBatchAsset, trainHouseAsset, campHouseAsset, coneTreeBatchAsset]

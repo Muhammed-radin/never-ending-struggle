@@ -2,6 +2,7 @@ let assetToLoad = [loaded];
 var timer = setInterval(function() {
   if (loaded) {
     canvas.layerStore[0].disable()
+    
     /*
     elem.style.display = 'none'
 
@@ -40,8 +41,8 @@ var timer = setInterval(function() {
     })
 
     document.body.appendChild(videoPlayer)
-
 */
+
     ////
     startUi()
     window.onclick = function() {
