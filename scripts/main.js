@@ -88,6 +88,7 @@ window.onload = function() {
       render: false,
     })
 
+
   function move(e) {
     e = e.changedTouches[0]
     liveX = e.clientX
@@ -98,8 +99,11 @@ window.onload = function() {
     angleX = Math.atan(distanceX)
     angleY = Math.atan(distanceY)
     angle = Math.atan2(distanceY, distanceX)
-    box.data.x -= angleX * 2
-    box.data.y -= angleY * 2
+
+    box.data.x -= angleX * 4
+    box.data.y -= angleY * 4
+
+
 
     canvas.layerStore.forEach(function(v1) {
       if (v1.name == 'ui') {} else {
@@ -109,77 +113,78 @@ window.onload = function() {
         })
       }
     })
-}
+  }
 
 
-elem.addEventListener('touchstart', function(e) {
-  startX = e.touches[0].clientX
-  startY = e.touches[0].clientY
-  elem.addEventListener('touchmove', move)
-})
+  elem.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX
+    startY = e.touches[0].clientY
+    elem.addEventListener('touchmove', move)
+  })
 
 
-elem.addEventListener('touchend', function() {
-  elem.removeEventListener('touchmove', move)
-})
+  elem.addEventListener('touchend', function() {
 
-/* var QX = canvas.app.HTML.input('range', 40, 50)
- var WX = canvas.app.HTML.input('range', 40, 90)
- QX.max = WX.max = 1000
- QX.min = WX.min = 0
+    elem.removeEventListener('touchmove', move)
+  })
 
- setInterval(function() {
-   canvas.entityStore.forEach(function(v) {
-     document.getElementById('p').innerHTML = QX.value+' '+WX.value
-     tiles.data.translate = new canvas.app.Vec2(QX.value, WX.value)
-     v.translate = new canvas.app.Vec2(QX.value, WX.value)
+  /* var QX = canvas.app.HTML.input('range', 40, 50)
+   var WX = canvas.app.HTML.input('range', 40, 90)
+   QX.max = WX.max = 1000
+   QX.min = WX.min = 0
+
+   setInterval(function() {
+     canvas.entityStore.forEach(function(v) {
+       document.getElementById('p').innerHTML = QX.value+' '+WX.value
+       tiles.data.translate = new canvas.app.Vec2(QX.value, WX.value)
+       v.translate = new canvas.app.Vec2(QX.value, WX.value)
+     })
    })
- })
- 
- var pX, pY, mX = 0, mY = 0
- 
- function move(e){
-   tt = pX ? mX += 1 : mX -= 1;
-   console.log(tt, pX);
-   QX.value = mX
- }
- 
- elem.addEventListener('touchstart',function (e){
-   pX = (winW / 2) < e.clientX ? true : false
-   elem.addEventListener('touchmove', move)
-})
+   
+   var pX, pY, mX = 0, mY = 0
+   
+   function move(e){
+     tt = pX ? mX += 1 : mX -= 1;
+     console.log(tt, pX);
+     QX.value = mX
+   }
+   
+   elem.addEventListener('touchstart',function (e){
+     pX = (winW / 2) < e.clientX ? true : false
+     elem.addEventListener('touchmove', move)
+  })
 
-elem.addEventListener('touchend',function (e){
-   elem.removeEventListener('touchmove', move)
-})*/
-
+  elem.addEventListener('touchend',function (e){
+     elem.removeEventListener('touchmove', move)
+  })*/
 
 
 
-const mainLayer = new layer('main')
-canvas.setLayer(mainLayer)
 
-loadScriptFile('scripts/asset.js')
+  const mainLayer = new layer('main')
+  canvas.setLayer(mainLayer)
 
-canvas.fillScreen()
-/* canvas.setWidth(WSW, WSH)
+  loadScriptFile('scripts/asset.js')
 
- setInterval(function() {
-   canvas.layerStore.forEach(function(v1) {
-     if (v1.name == 'ui') {
-     } else {
-       v1.entities.forEach(function(v) {
-         v.data ? v.data = v : null
-         v.scale = new canvas.app.Vec2(WSS, WSS)
-       })
-     }
-   })
- })*/
+  canvas.fillScreen()
+  /* canvas.setWidth(WSW, WSH)
 
-canvas.repeatRender()
+   setInterval(function() {
+     canvas.layerStore.forEach(function(v1) {
+       if (v1.name == 'ui') {
+       } else {
+         v1.entities.forEach(function(v) {
+           v.data ? v.data = v : null
+           v.scale = new canvas.app.Vec2(WSS, WSS)
+         })
+       }
+     })
+   })*/
+
+  canvas.repeatRender()
 
 
-loaded = true
+  loaded = true
 }
 
 function loadScriptFile(url) {
@@ -202,7 +207,8 @@ function loadScriptFile(url) {
 
 
 setInterval(function() {
-  var store = canvas.layerStore[1].entities;
+  //var store = canvas.layerStore[1].entities;
+  var store = getLayer('main').entities
 
   store.sort((a, b) => {
     return a.dx - b.dx;
@@ -212,7 +218,20 @@ setInterval(function() {
     return a.dy - b.dy;
   });
 
+
+
+
+
+  function findDuplicates(arr) {
+    return arr.filter((currentValue, currentIndex) => { arr.indexOf(currentValue) !== currentIndex })
+  }
+
+  if (canvas.layerIndex !== canvas.store.length) {
+    canvas.store[canvas.layerIndex] = []
+  }
+
 }, 100)
+
 
 function fullScreen(element) {
   if (element.requestFullscreen) {
