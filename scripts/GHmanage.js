@@ -16,6 +16,8 @@ document.getElementById('button').onclick = function() {
         document.querySelector('.block-div').style.display = 'none'
 
         localStorage.setItem('graph', true)
+      } else {
+        alert('ERROR: graphcode is wrong, retry it')
       }
     }
   }
