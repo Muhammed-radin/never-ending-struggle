@@ -59,10 +59,10 @@ body {
 
 
 .model-head {
-  background: #333;
+  background: #111;
   border-radius: 8px;
-  padding: 0.3rem;
-  font-size: 14px;
+  padding: 0.4rem;
+  font-size: 13px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: 1px solid #111;
@@ -70,13 +70,65 @@ body {
 
 .model-body {
   border-radius: 8px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  padding: 0.3rem;
+  /*border-top-left-radius: 0;
+  border-top-right-radius: 0;*/
+  padding: 0.8rem;
   background: #333;
   font-size: 12px;
 }
 
+.right {
+  position: absolute;
+  right: 10px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 9px;
+}
+
+input {
+  background: #222;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 0.3rem 0.3rem;
+  width: 90%;
+}
+
+.model-footer {
+  padding: 0.3rem;
+  height: 30px;
+}
+
+button {
+  padding: 0.3rem 0.5rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #222;
+  margin: 0.1rem;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 3px inset #222
+}
+
+.block-div {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #37383C9C;
+}
+
+.dark {
+  background: #ECECEC;
+}
+
+button:hover {
+  background: #333;
+}
+
 p {
-  margin: 0;
+  margin: 0.1rem;
 }

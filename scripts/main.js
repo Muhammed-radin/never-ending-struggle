@@ -8,6 +8,7 @@ let entity = canvas.entity;
 let entityGroup = canvas.entityGroup;
 let layer = canvas.Layer;
 
+
 let winW = 0,
   winH = 0;
 
