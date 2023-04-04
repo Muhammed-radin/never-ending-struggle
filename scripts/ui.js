@@ -1,6 +1,6 @@
 let assetToLoad = [loaded];
 var timer = setInterval(function() {
-  if (loaded) {
+  if (loaded && localStorage.getItem('graph')) {
     canvas.layerStore[0].disable()
 
     

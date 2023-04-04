@@ -8,6 +8,7 @@ if (localStorage.getItem('graph')) {
   document.querySelector('.block-div').style.display = 'none'
 }
 
+
 document.getElementById('button').onclick = function() {
   if (graph.value) {
     if (userName.value) {
