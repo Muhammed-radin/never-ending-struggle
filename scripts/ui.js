@@ -3,7 +3,7 @@ var timer = setInterval(function() {
   if (loaded) {
     canvas.layerStore[0].disable()
 
-    /*
+    
     elem.style.display = 'none'
 
     var pTag = document.createElement('p')
@@ -42,12 +42,12 @@ var timer = setInterval(function() {
 
     document.body.appendChild(videoPlayer)
 
-*/
+
     ////
-    startUi()
+    /*startUi()
     window.onclick = function() {
       fullScreen(document.querySelector('html'))
-    }
+    }*/
 
     function startUi() {
       elem.style.display = 'block'

@@ -16,6 +16,7 @@ document.getElementById('button').onclick = function() {
         document.querySelector('.block-div').style.display = 'none'
 
         localStorage.setItem('graph', true)
+        window.location.reload()
       } else {
         alert('ERROR: graphcode is wrong, retry it')
       }
