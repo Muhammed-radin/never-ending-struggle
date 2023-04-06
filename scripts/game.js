@@ -39,18 +39,7 @@ let loadTimer = setInterval(function() {
       yA = [0, 240, 240 * 2, 240 * 3],
         xA = [0, 256, 256 * 2, 256 * 3]
 
-      var anim = new entity({
-        type: 'image',
-        imageURl: 'images/asset/20230319_082604.png',
-        x: (1280/3)*1,
-        y: 0,
-        dx: 90,
-        dy: 90,
-        width: 500,
-        height: 500,
-        dWidth: 200,
-        dHeight: 200
-      })
+
 
       vV = 568
 
