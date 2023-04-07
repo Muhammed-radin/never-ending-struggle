@@ -178,7 +178,7 @@ var timer = setInterval(function() {
         loadBg.data.y = h - 70
         loader.data.x = loadBg.data.x
         loader.data.y = loadBg.data.y + 0.5
-        loadTxt.data.textData.width ? loadTxt.data.x = (w / 2) - (loadTxt.data.textData.width / 2) : null
+        loadTxt.data.textData.width == undefined ? null : loadTxt.data.x = (w / 2) - (loadTxt.data.textData.width / 2)
         loadTxt.data.y = loadBg.data.y + 35
       })
       ///€€&=_&^^_€
