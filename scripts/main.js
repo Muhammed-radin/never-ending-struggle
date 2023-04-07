@@ -1,3 +1,5 @@
+// setting mango.js variables
+
 let canvas = Mango();
 let mng = canvas;
 let mango = canvas;
@@ -8,26 +10,33 @@ let entity = canvas.entity;
 let entityGroup = canvas.entityGroup;
 let layer = canvas.Layer;
 
-
+// window width & height
 let winW = 0,
   winH = 0;
 
+// background tile image
 let tile = document.getElementById('grass')
 let ratio = {
   x: 83 - 43,
   y: 55 - 65
 }
 
+
+// if device is loaded
 let loaded = false
 let loadedNum1 = false
 let loadedNum2 = false
 
+// canvas resolution manage
+// window screen width
+// window screen height 
+// window screen scale
 var WSW = screen.width * (devicePixelRatio),
   WSH = screen.height * (devicePixelRatio),
   WSS = 2
 
 
-
+// getting image original resolution
 function getWH(url, callback) {
   let img = new Image()
   img.src = url
@@ -37,6 +46,7 @@ function getWH(url, callback) {
   }
 }
 
+// getting layers from mangojs
 function getLayer(name) {
   var ret
   canvas.layerStore.forEach(function(v, i) {
@@ -47,7 +57,7 @@ function getLayer(name) {
   return ret;
 }
 
-
+// the function is changing tile texture 
 function useTile(url, x, y, w, h, w1, h1) {
   let c = document.createElement('canvas')
   let ctux = c.getContext('2d')
@@ -68,11 +78,17 @@ function useTile(url, x, y, w, h, w1, h1) {
   }
 }
 
+// window loadded
 window.onload = function() {
+  // creating new layer
   const bgLayer = new layer('bg')
+  // setting layer in mango
   canvas.setLayer(bgLayer)
+  // creating pattern in layer
   let grass = ctx.createPattern(tile, 'repeat')
-
+  
+  // creating tile entity
+  // and setting pattern 
   tiles = new entity({
     width: 500000,
     height: 500000,
@@ -80,7 +96,9 @@ window.onload = function() {
     x: -250000,
     y: -250000,
   })
-
+  
+  // touchmove event
+  // using for pan map
   var startX, startY, liveX, liveY, angle, angleX, angleY, distance, distanceX, distanceY,
     box = new entity({
       width: 0,
