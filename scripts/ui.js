@@ -1,7 +1,10 @@
-let assetToLoad = [loaded];
 var timer = setInterval(function() {
   if (loaded && localStorage.getItem('graph')) {
     canvas.layerStore[0].disable()
+
+    ///////////////////
+    // public mode   //
+    ///////////////////
 
     /*
     elem.style.display = 'none'
@@ -42,12 +45,16 @@ var timer = setInterval(function() {
 
     document.body.appendChild(videoPlayer)
 */
+    /////////////
 
-    ////
+    ////////////////////////
+    // development mode   //
+    ////////////////////////
     startUi()
     window.onclick = function() {
       fullScreen(document.querySelector('html'))
     }
+    //////////////////////
 
     function startUi() {
       elem.style.display = 'block'
@@ -114,7 +121,7 @@ var timer = setInterval(function() {
 
       var loader = new entity({
         fill: '#6CC144',
-        width: 50,
+        width: 10,
         height: 13,
         type: 'roundRect',
         arcLevel: 5,
@@ -132,33 +139,35 @@ var timer = setInterval(function() {
         fontSize: 15
       })
 
-
-      var prec = 0
-      var timeToLoad = setInterval(function() {
-          function progressIt(value) {
-            prec += value
-            loader.data.width = prec
-            loadTxt.data.text = 'loading(' + prec / 2 + '%)'
-            if (prec >= 200) {
-              clearInterval(timeToLoad)
-              setTimeout(function() {
-                startHomeUi()
-              }, 1000)
+      loadPromise.then(function() {
+        var prec = 0
+        var timeToLoad = setInterval(function() {
+            function progressIt(value) {
+              prec += value
+              console.log(value);
+              loader.data.width = prec
+              loadTxt.data.text = 'loading(' + prec / 2 + '%)'
+              if (prec >= 200) {
+                clearInterval(timeToLoad)
+                setTimeout(function() {
+                  startHomeUi()
+                }, 1000)
+              }
             }
-          }
 
-          if (assetToLoad.length == 0) {
-            progressIt(4)
-          } else {
-            var precTxt = ''
-            assetToLoad.forEach(function(v, i) {
-              precTxt += (v + (i == (assetToLoad.length - 1) ? '' : '&&'))
-            })
+            if (assetToLoad.length == 0) {
+              progressIt(4)
+            } else {
+              var precTxt = ''
+              assetToLoad.forEach(function(v, i) {
+                precTxt += (v + (i == (assetToLoad.length - 1) ? '' : '&&'))
+              })
 
-            progressIt(200 / assetToLoad.length)
-          }
-        },
-        50)
+              progressIt(200 / assetToLoad.length)
+            }
+          },
+          500)
+      })
 
       setLoopRenderPixel((w, h) => {
         thumb.data.width = w - blackBoxDepth;

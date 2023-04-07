@@ -1,3 +1,16 @@
+class Loader {
+  constructor (boolean){
+    this.loaded = boolean
+  }
+}
+
+let assetToLoad = [];
+let loadPromise = new Promise((reslove, reject)=>{
+  setTimeout(function (){
+    reslove()
+  }, 3500)
+})
+
 class ClassicAsset {
   constructor(url, name, x, y, w, h) {
     this.name = name
@@ -6,7 +19,18 @@ class ClassicAsset {
     this.w = w
     this.h = h
     this.url = url
-
+    this.orginalWidth = 0
+    this.orginalHeight = 0
+    this.loaded = false
+    this.loader = new Loader(this.loaded)
+    assetToLoad.push(this.loader)
+    var self = this
+    getWH(url, function(e){
+      self.orginalWidth = e.w
+      self.orginalHeight = e.h
+      self.loaded = true
+      self.loader.loaded = self.loaded
+    })
     GameDataManagement.storeClassicAsset.push(this)
   }
 }

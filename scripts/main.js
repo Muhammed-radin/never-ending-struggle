@@ -184,6 +184,7 @@ window.onload = function() {
   canvas.setLayer(mainLayer)
 
   loadScriptFile('scripts/asset.js')
+  loadScriptFile('scripts/ui.js')
 
   canvas.fillScreen()
   /* canvas.setWidth(WSW, WSH)
