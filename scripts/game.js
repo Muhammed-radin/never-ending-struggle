@@ -31,7 +31,7 @@ let loadTimer = setInterval(function() {
         dHeight: 100
       }), treeBatchAsset)
 
-      let trainHouse = new GameAsset(new entity({ dx: 250, dy: 300 }), trainHouseAsset, { wall: 0 })
+      let trainHouse = new GameAsset(new entity({ dx: 250, dy: 300, dWidth: 80, dHeight: 40 }), stoneWallAsset, { wall: 0 })
       let vx = 50,
         vy = 50,
         vx1 = 80,
@@ -42,14 +42,25 @@ let loadTimer = setInterval(function() {
 
 
       vV = 568
+      vx = 0
+      vy = 300
 
-      /*setInterval(function() {
+      setInterval(function() {
 
-        if (anim.data.x > vV * 23) {
+        /*if (anim.data.x > vV * 23) {
           anim.data.x = 0
         }
-        anim.data.x += vV
-      }, 100)*/
+        anim.data.x += vV*/
+        vx += 8
+        var randomNum = canvas.app.randomNumberOnly(0, 2)
+        if (1 < randomNum) {
+          vy += 5
+        } else {
+          vy += 5
+        }
+
+        new GameAsset(new entity({ dx: vx, dy: vy, dWidth: 80, dHeight: 40 }), stoneWallAsset, { wall: 0 })
+      }, 100)
 
       /*var B = canvas.app.HTML.input('range', 60, 60),
         BR = canvas.app.HTML.input('range', 60, 90),

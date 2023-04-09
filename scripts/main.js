@@ -86,7 +86,7 @@ window.onload = function() {
   canvas.setLayer(bgLayer)
   // creating pattern in layer
   let grass = ctx.createPattern(tile, 'repeat')
-  
+
   // creating tile entity
   // and setting pattern 
   tiles = new entity({
@@ -96,7 +96,7 @@ window.onload = function() {
     x: -250000,
     y: -250000,
   })
-  
+
   // touchmove event
   // using for pan map
   var startX, startY, liveX, liveY, angle, angleX, angleY, distance, distanceX, distanceY,
@@ -184,7 +184,9 @@ window.onload = function() {
   canvas.setLayer(mainLayer)
 
   loadScriptFile('scripts/asset.js')
-  loadScriptFile('scripts/ui.js')
+  setTimeout(function() {
+    loadScriptFile('scripts/ui.js')
+  }, 50)
 
   canvas.fillScreen()
   /* canvas.setWidth(WSW, WSH)

@@ -8,7 +8,7 @@ let assetToLoad = [];
 let loadPromise = new Promise((reslove, reject)=>{
   setTimeout(function (){
     reslove()
-  }, 3500)
+  }, 2500)
 })
 
 class ClassicAsset {
@@ -107,6 +107,6 @@ let trainHouseAsset = new ClassicAsset('images/asset/set1.png', 'trainHouse', 0,
 let campHouseAsset = new ClassicAsset('images/asset/set1.png', 'campHouse', 250, 0, 250, 250)
 let treeBatchAsset = new ClassicAsset('images/asset/set1.png', 'treeBatch', 250, 730, 250, 250)
 let coneTreeBatchAsset = new ClassicAsset('images/asset/set4.png', 'coneTreeBatch', 0, 250, 250, 250)
-
+let stoneWallAsset = new ClassicAsset('images/asset/set10.png', 'stoneWall', 650, 250, 150, 75)
 
 let allClassicAssets = [treeBatchAsset, trainHouseAsset, campHouseAsset, coneTreeBatchAsset]

@@ -166,7 +166,7 @@ var timer = setInterval(function() {
               progressIt(200 / assetToLoad.length)
             }
           },
-          500)
+          100)
       })
 
       setLoopRenderPixel((w, h) => {
